@@ -27,7 +27,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           builder: (context, state) {
             return Column(
               children: [
-                HeaderContainer(),
+                 HeaderContainer(),
                 SizedBox(
                   height: 680.h,
                   child: PageView(

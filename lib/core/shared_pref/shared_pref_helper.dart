@@ -4,7 +4,8 @@ class SharedPreferencesHelper {
   // Singleton instance
   static final SharedPreferencesHelper _instance = SharedPreferencesHelper._internal();
 
-  factory SharedPreferencesHelper() {
+  factory SharedPreferencesHelper()
+  {
     return _instance;
   }
 
@@ -13,7 +14,7 @@ class SharedPreferencesHelper {
   SharedPreferences? _prefs;
 
   // Initialize SharedPreferences
-  Future<void> init() async {
+   Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
   }
 
@@ -39,6 +40,7 @@ class SharedPreferencesHelper {
 
   // Save a boolean value
   Future<void> saveBool(String key, bool value) async {
+    print(value);
     await _prefs?.setBool(key, value);
   }
 
