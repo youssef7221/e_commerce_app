@@ -40,7 +40,6 @@ dependencies:
   animated_text_kit: ^4.2.2
   bloc:
   rive:
-  dio:
   http:
   loading_animation_widget: ^1.2.1
   shimmer_animation:
@@ -63,6 +62,9 @@ dependencies:
   flutter_bloc: ^8.1.6
   cached_network_image: ^3.3.1
   smooth_page_indicator: ^1.1.0
+  either_dart: ^1.0.0
+  dio: ^5.5.0+1
+  equatable: ^2.0.5
 dev_dependencies:
   flutter_test:
     sdk: flutter

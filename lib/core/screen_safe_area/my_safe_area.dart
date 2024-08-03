@@ -7,7 +7,7 @@ class MySafeArea extends StatelessWidget {
   MySafeArea(this.widget,);
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.only(top: 45.h),
+    return Padding(padding: EdgeInsets.only(top: 35.h),
     child: widget,);
   }
 }

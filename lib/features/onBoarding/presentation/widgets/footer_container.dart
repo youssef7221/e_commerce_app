@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../../core/shared_pref/shared_pref_helper.dart';
 import '../../../../core/utills/app_color.dart';
 import '../manager/on_boarding_cubit.dart';
 
@@ -24,7 +25,7 @@ class FooterContainer extends StatelessWidget {
             maintainState: true,
             maintainAnimation: true,
             visible: context.read<OnBoardingCubit>().prevVisibilty(),
-            child: GestureDetector(
+            child: InkWell(
             onTap: ()=>context.read<OnBoardingCubit>().buttonChange("Prev"),
               child: Text(AppString.previous,style: AppFonts.semiBoldFont.copyWith(
                   color: AppColors.blackColor
@@ -34,17 +35,22 @@ class FooterContainer extends StatelessWidget {
           SmoothPageIndicator(
               controller: context.read<OnBoardingCubit>().controller,
               count:3,
-              effect: const ScrollingDotsEffect(
+              effect: const JumpingDotEffect(
                   activeDotColor: AppColors.blackColor
               )
           ),
-         context.read<OnBoardingCubit>().index < 3 ? GestureDetector(
+         context.read<OnBoardingCubit>().index < 3 ? InkWell(
             onTap: ()=>context.read<OnBoardingCubit>().buttonChange("Next"),
             child: Text(AppString.next,style: AppFonts.semiBoldFont.copyWith(
               color: AppColors.buttonColor
             ),),
-          ) : GestureDetector(
-           onTap: ()=> Navigator.pushNamed(context , AppRoutes.login),
+          ) : InkWell(
+           onTap:(){
+             SharedPreferencesHelper sharedPreferencesHelper = SharedPreferencesHelper();
+             sharedPreferencesHelper.init();
+             sharedPreferencesHelper.saveBool("first", false);
+             Navigator.pushNamed(context , AppRoutes.login);
+             },
             child: Text(AppString.start,style: AppFonts.semiBoldFont.copyWith(
                color: AppColors.buttonColor
                      ),),
