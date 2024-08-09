@@ -1,6 +1,7 @@
 import 'package:e_commerce/config/routes/app_routes.dart';
 import 'package:e_commerce/core/password_cubit/password_cubit.dart';
 import 'package:e_commerce/core/shared_pref/shared_pref_helper.dart';
+import 'package:e_commerce/features/home_screen/presentation/manager/home_screen_cubit.dart';
 import 'package:e_commerce/features/login_screen/presentation/manager/login_screen_cubit.dart';
 import 'package:e_commerce/features/onBoarding/presentation/manager/on_boarding_cubit.dart';
 import 'package:e_commerce/features/signup_screen/presentation/manager/signup_cubit.dart';
@@ -31,11 +32,12 @@ class MyApp extends StatelessWidget {
               BlocProvider(create: (context) => OnBoardingCubit(),),
               BlocProvider(create: (context) => LoginScreenCubit(),),
               BlocProvider(create: (context) => PasswordCubit(),),
-              BlocProvider(create: (context) => SignupCubit(),)
+              BlocProvider(create: (context) => SignupCubit(),),
+              BlocProvider(create: (context) => HomeScreenCubit(),)
             ],
             child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              initialRoute:showOnboarding ? AppRoutes.onboarding : AppRoutes.login,
+              debugShowCheckedModeBanner:false,
+              initialRoute:AppRoutes.home,
               onGenerateRoute: (settings) => Routes.onGenerate(settings),
             ),
           );

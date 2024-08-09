@@ -26,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return MySafeArea(
+      widget:
       Scaffold(
         body: Form(
           key: _formKey,

@@ -13,5 +13,13 @@ class AppString {
   static const String passForget = "ForgotPassword?";
   static const String dontAccount = "Don't Have Account ?";
   static const String alreadyHaveAcc = "Already Have Account?";
-
+  static const String appName = "اشتريلي";
+  static const String search = "Search any product..";
+  static const String categories = "All Featured";
+  static const String viewAll = "view all";
+  static const String bigMall = "Big Mall";
+  static const String smallPhone = "Now on your phone";
+  static const String bestDeals = "Best Deals";
+  static const String somethingWrong = "Something went wrong";
+  static const String topRating = "Top Rated";
 }

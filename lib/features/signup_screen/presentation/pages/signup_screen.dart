@@ -24,22 +24,22 @@ class _SignupScreenState extends State<SignupScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController passController = TextEditingController();
   final TextEditingController confirmPassController = TextEditingController();
-final TextEditingController phoneController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return MySafeArea(
+    return MySafeArea(widget:
       Scaffold(
         body: Form(
           key: _formKey,
           child: SingleChildScrollView(
             child: BlocConsumer<SignupCubit, SignupState>(
               listener: (context, state) {
-                switch(state) {
+                switch (state) {
                   case SignupLoading():
                     showDialog(
                       context: context,
-                      builder: (context){
+                      builder: (context) {
                         return const Center(
                           child: CircularProgressIndicator(
                             color: AppColors.buttonColor,
@@ -55,7 +55,12 @@ final TextEditingController phoneController = TextEditingController();
                         return AlertDialog(
                           title: SizedBox(
                               height: 200.h,
-                              child: Text(context.read<SignupCubit>().userEntity?.user?.name ?? "Success")),
+                              child: Text(context
+                                      .read<SignupCubit>()
+                                      .userEntity
+                                      ?.user
+                                      ?.name ??
+                                  "Success")),
                         );
                       },
                     );
@@ -67,7 +72,8 @@ final TextEditingController phoneController = TextEditingController();
                         return AlertDialog(
                           title: SizedBox(
                               height: 200.h,
-                              child: Text(context.read<SignupCubit>().error ?? "Error")),
+                              child: Text(context.read<SignupCubit>().error ??
+                                  "Error")),
                         );
                       },
                     );
@@ -89,8 +95,7 @@ final TextEditingController phoneController = TextEditingController();
                         height: 100.h,
                         child: Text(
                           AppString.createAcc,
-                          style: AppFonts.extraBold
-                              .copyWith(
+                          style: AppFonts.extraBold.copyWith(
                               fontSize: 36, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -114,7 +119,6 @@ final TextEditingController phoneController = TextEditingController();
                       controller: emailController,
                       validator: Validators.emailValidate,
                       keyboardType: TextInputType.text,
-
                     ),
                     SizedBox(
                       height: 40.h,
@@ -145,48 +149,52 @@ final TextEditingController phoneController = TextEditingController();
                       hintText: "Confirm Your password",
                       prefixIcon: const Icon(Icons.lock),
                       controller: confirmPassController,
-                      validator:
-                          (value) =>
-                          Validators.confirmPasswordValidate(
-                              value, passController.text),
+                      validator: (value) => Validators.confirmPasswordValidate(
+                          value, passController.text),
                       keyboardType: TextInputType.text,
-
                     ),
-                    SizedBox(height: 30.h,),
-                    CustomButton(text: "Create Account",
+                    SizedBox(
+                      height: 30.h,
+                    ),
+                    CustomButton(
+                      text: "Create Account",
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           context.read<SignupCubit>().postUserAccount(
                               nameController.text,
                               emailController.text,
                               passController.text,
-                          confirmPassController.text,
-                          phoneController.text);
+                              confirmPassController.text,
+                              phoneController.text);
                         }
-                      },),
-                    SizedBox(height: 30.h,),
+                      },
+                    ),
+                    SizedBox(
+                      height: 30.h,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(AppString.dontAccount,
+                        Text(
+                          AppString.dontAccount,
                           style: AppFonts.semiBoldFont.copyWith(
-                              color: AppColors.smallTextColor,
-                              fontSize: 14.sp
-                          ),),
+                              color: AppColors.smallTextColor, fontSize: 14.sp),
+                        ),
                         InkWell(
                           onTap: () {
                             Navigator.pushNamed(context, AppRoutes.login);
                           },
-                          child: Text(AppString.login,
+                          child: Text(
+                            AppString.login,
                             style: AppFonts.semiBoldFont.copyWith(
                               color: AppColors.buttonColor,
                               decoration: TextDecoration.underline,
                               decorationColor: AppColors.buttonColor,
-                            ),),
+                            ),
+                          ),
                         )
                       ],
                     ),
-
                   ],
                 );
               },

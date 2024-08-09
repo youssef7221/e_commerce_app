@@ -4,4 +4,6 @@ class ApiEndpoints {
   static String login = "auth/signin";
 
   static String signUp = "auth/signup";
+  static String product = "products";
+  static String categories = "categories";
 }

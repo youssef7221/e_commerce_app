@@ -22,7 +22,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: MySafeArea(
+      body: MySafeArea(widget:
         BlocBuilder<OnBoardingCubit, OnBoardingState>(
           builder: (context, state) {
             return Column(
